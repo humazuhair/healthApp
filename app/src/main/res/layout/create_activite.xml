@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6495ED">
+
+    <EditText
+        android:id="@+id/activite_titre"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="120dp"
+        android:layout_alignParentTop="true"
+        android:background="#F8F8FF"
+        android:ems="10"
+        android:hint="Titre"
+        android:inputType="text"
+        android:textSize="20sp"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/activite_description"
+        android:layout_width="wrap_content"
+        android:layout_height="114dp"
+        android:layout_below="@+id/activite_duree"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:background="#F8F8FF"
+        android:ems="10"
+        android:singleLine="false"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        android:textSize="20sp"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/activite_duree"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/activite_titre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:background="#F8F8FF"
+        android:ems="10"
+        android:hint="Durée en heure"
+        android:inputType="number"
+        android:textSize="20sp"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/ajouterBtn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/activite_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Ajouter" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ajouterBtn"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="71dp"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+</RelativeLayout>
