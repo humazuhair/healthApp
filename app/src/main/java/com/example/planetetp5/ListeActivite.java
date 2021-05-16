@@ -6,19 +6,37 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
-public class ListeActivite extends Fragment implements DetecteurDeClicSurRecycler{
+public class ListeActivite extends DialogFragment{
+
+    FragmentManager fragmentManager;
 
     private RecyclerView mRecyclerView;
     private MonRecyclerViewAdapterActivite mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    CoordinatorLayout mcoordinatorLayout;
-    com.example.planetetp5.Donnee donnee = new com.example.planetetp5.Donnee(this);
+
+    public ListeActivite(){
+
+    }
+
+    public static ListeActivite newInstance(FragmentManager fragmentManager){
+        ListeActivite listeActivite = new ListeActivite();
+        listeActivite.fragmentManager = fragmentManager;
+        return listeActivite;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(
@@ -30,43 +48,44 @@ public class ListeActivite extends Fragment implements DetecteurDeClicSurRecycle
 
         // Add the following lines to create RecyclerView
         mRecyclerView = view.findViewById(R.id.recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(false);
 
         //Exercice 1 on remplace la ligne créant le LayoutManager
-        //mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
         //mLayoutManager=new LinearLayoutManager(this,GridLayoutManager.VERTICAL, false);
 
         //mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MonRecyclerViewAdapterActivite(getDataSource());
+        mAdapter = new MonRecyclerViewAdapterActivite(getContext(), getDataSource());
         mRecyclerView.setAdapter(mAdapter);
 
-        mcoordinatorLayout = view.findViewById(R.id.coordinatorLayout);
-        //RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, R.drawable.divider);
-        //mRecyclerView.addItemDecoration(itemDecoration);
-
-        int position = 0;
-        mcoordinatorLayout = view.findViewById(R.id.coordinatorLayout);
         return view;
     }
 
-    private ArrayList<com.example.planetetp5.Donnee> getDataSource() {
-        ArrayList results = new ArrayList<com.example.planetetp5.Donnee>();
-        for (int index = 0; index < donnee.taillePlanetes.length; index++) {
-            com.example.planetetp5.Donnee obj = new com.example.planetetp5.Donnee(donnee.planet[index] ,donnee.taillePlanetes[index], donnee.image[index]);
-            results.add(index, obj);
-        }
-        return results;
+    private ArrayList<LinkedHashMap<String, String>> getDataSource(){
+
+        ArrayList<LinkedHashMap<String, String>> activites = new ArrayList<>();
+
+        LinkedHashMap<String, String> activite1 = new LinkedHashMap<>();
+        activite1.put("titre", "Natation");
+        activite1.put("duree", "1");
+        activite1.put("description", "Swim Swim");
+        activites.add(activite1);
+
+        LinkedHashMap<String, String> activite2 = new LinkedHashMap<>();
+        activite2.put("titre", "Course");
+        activite2.put("duree", "2");
+        activite2.put("description", "Run Run");
+        activites.add(activite2);
+
+        LinkedHashMap<String, String> activite3 = new LinkedHashMap<>();
+        activite3.put("titre", "Marche");
+        activite3.put("duree", "3");
+        activite3.put("description", "Walk Walk");
+        activites.add(activite3);
+
+        return activites;
+
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mAdapter.setDetecteurDeClicSurRecycler(this);
-    }
-
-    @Override
-    public void clicSurRecyclerItem(int position, View v) {
-
-    }
 }

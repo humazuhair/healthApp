@@ -75,7 +75,7 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/image"
+        app:srcCompat="@drawable/patient"
         tools:layout_editor_absoluteX="98dp"
         tools:layout_editor_absoluteY="432dp"
         tools:ignore="MissingConstraints" />

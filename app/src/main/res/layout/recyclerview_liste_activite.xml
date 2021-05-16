@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Titre"
+                android:text="@string/activite_titre"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:id="@+id/activite_titre"/>
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/activite_titre"
-                android:text="Duree"
+                android:text="@string/activite_duree"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/activite_duree"
-                android:text="Description"
+                android:text="@string/activite_description"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 

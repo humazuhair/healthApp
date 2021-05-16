@@ -4,18 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6495ED">
+    android:background="#6495ED"
+    tools:context=".CreateActiviteFragment">
+
+    <TextView
+        android:id="@+id/texteActivite"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:text="@string/creer_activite"
+        android:textSize="22sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
     <EditText
         android:id="@+id/activite_titre"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="120dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/texteActivite"
+        android:layout_centerHorizontal="true"
         android:background="#F8F8FF"
         android:ems="10"
-        android:hint="Titre"
+        android:hint="@string/activite_titre"
         android:inputType="text"
         android:textSize="20sp"
         tools:ignore="Autofill" />
@@ -24,13 +36,13 @@
         android:id="@+id/activite_description"
         android:layout_width="wrap_content"
         android:layout_height="114dp"
-        android:layout_below="@+id/activite_duree"
+        android:layout_below="@+id/activite_structure"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="23dp"
         android:background="#F8F8FF"
         android:ems="10"
         android:singleLine="false"
-        android:hint="Description"
+        android:hint="@string/activite_description"
         android:inputType="textMultiLine"
         android:textSize="20sp"
         tools:ignore="Autofill" />
@@ -41,22 +53,36 @@
         android:layout_height="50dp"
         android:layout_below="@+id/activite_titre"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="23dp"
         android:background="#F8F8FF"
         android:ems="10"
-        android:hint="Durée en heure"
+        android:hint="@string/activite_duree"
         android:inputType="number"
         android:textSize="20sp"
         tools:ignore="Autofill" />
 
+    <EditText
+        android:id="@+id/activite_structure"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/activite_duree"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:background="#F8F8FF"
+        android:ems="10"
+        android:hint="@string/structure"
+        android:inputType="text"
+        android:textSize="20sp"
+        tools:ignore="Autofill" />
+
     <Button
-        android:id="@+id/ajouterBtn"
+        android:id="@+id/ajouterActiviteBtn"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_below="@+id/activite_description"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Ajouter" />
+        android:layout_marginTop="50dp"
+        android:text="@string/ajouter_activite" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

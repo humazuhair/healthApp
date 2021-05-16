@@ -1,5 +1,6 @@
 package com.example.planetetp5;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,16 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 
 public class MonRecyclerViewAdapterActivite extends RecyclerView.Adapter<com.example.planetetp5.MonRecyclerViewAdapterActivite.ConteneurDeDonnee> {
-    private ArrayList<com.example.planetetp5.Donnee> donnees;
-    private DetecteurDeClicSurRecycler detecteurDeClicSurRecycler;
+    private Context context;
+    private ArrayList<LinkedHashMap<String, String>> activites;
 
-    public MonRecyclerViewAdapterActivite(ArrayList<com.example.planetetp5.Donnee> donnees) {
-        this.donnees = donnees;
+    public MonRecyclerViewAdapterActivite(Context context, ArrayList<LinkedHashMap<String, String>> activites) {
+        this.context = context;
+        this.activites = activites;
     }
 
     @Override
@@ -29,14 +32,13 @@ public class MonRecyclerViewAdapterActivite extends RecyclerView.Adapter<com.exa
 
     @Override
     public void onBindViewHolder(ConteneurDeDonnee conteneur, int position) {
-        conteneur.titre.setText(donnees.get(position).getPlanete());
-        conteneur.duree.setText(donnees.get(position).getTailles());
-        conteneur.description.setText(donnees.get(position).getImages());
+        conteneur.titre.setText(activites.get(position).get("titre"));
+        conteneur.duree.setText(activites.get(position).get("duree") + " " + context.getString(R.string.heures));
     }
 
     @Override
     public int getItemCount() {
-        return donnees.size();
+        return activites.size();
     }
 
     public void setDetecteurDeClicSurRecycler(DetecteurDeClicSurRecycler detecteurDeClicSurRecycler) {
@@ -46,14 +48,12 @@ public class MonRecyclerViewAdapterActivite extends RecyclerView.Adapter<com.exa
     public static class ConteneurDeDonnee extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView titre;
         TextView duree;
-        TextView description;
         private static DetecteurDeClicSurRecycler detecteurDeClicSurRecycler;
 
         public ConteneurDeDonnee(View itemView) {
             super(itemView);
             titre = (TextView) itemView.findViewById(R.id.activite_titre);
             duree = (TextView) itemView.findViewById(R.id.activite_duree);
-            description = (TextView) itemView.findViewById(R.id.activite_description);
             itemView.setOnClickListener(this);
         }
 

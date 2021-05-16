@@ -29,7 +29,11 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            tools:itemCount="3"
+            tools:listitem="@layout/recyclerview_liste_activite"/>
+
+
 
     </RelativeLayout>
 

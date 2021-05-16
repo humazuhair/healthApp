@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom"
+                android:text="@string/patient_nom"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:id="@+id/patient_nom"/>
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/patient_nom"
-                android:text="Prenom"
+                android:text="@string/patient_prenom"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/patient_prenom"
-                android:text="Pathologie"
+                android:text="@string/patient_pathologie"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 

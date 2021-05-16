@@ -1,42 +1,48 @@
 package com.example.planetetp5;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 
-public class MonRecyclerViewAdapterPatient extends RecyclerView.Adapter<com.example.planetetp5.MonRecyclerViewAdapterPatient.ConteneurDeDonnee> {
-    private ArrayList<com.example.planetetp5.Donnee> donnees;
-    private DetecteurDeClicSurRecycler detecteurDeClicSurRecycler;
+public class MonRecyclerViewAdapterPatient extends RecyclerView.Adapter<MonRecyclerViewAdapterPatient.ConteneurDeDonnee> {
+    private Context context;
+    private ArrayList<LinkedHashMap<String, String>> patients;
 
-    public MonRecyclerViewAdapterPatient(ArrayList<com.example.planetetp5.Donnee> donnees) {
-        this.donnees = donnees;
+    public MonRecyclerViewAdapterPatient(Context context, ArrayList<LinkedHashMap<String, String>> activites) {
+        this.context = context;
+        this.patients = activites;
     }
 
+    @NonNull
     @Override
-    public ConteneurDeDonnee onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MonRecyclerViewAdapterPatient.ConteneurDeDonnee onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_liste_patient, parent, false);
+                .inflate(R.layout.recyclerview_liste_activite, parent, false);
         return new ConteneurDeDonnee(view);
     }
 
     @Override
     public void onBindViewHolder(ConteneurDeDonnee conteneur, int position) {
-        conteneur.nom.setText(donnees.get(position).getPlanete());
-        conteneur.prenom.setText(donnees.get(position).getTailles());
-        conteneur.pathologie.setText(donnees.get(position).getImages());
+
+        conteneur.nom.setText(patients.get(position).get("nom"));
+        conteneur.prenom.setText(patients.get(position).get("prenom"));
+        conteneur.pathologie.setText(patients.get(position).get("pathologie"));
     }
 
     @Override
     public int getItemCount() {
-        return donnees.size();
+        return patients.size();
     }
 
     public void setDetecteurDeClicSurRecycler(DetecteurDeClicSurRecycler detecteurDeClicSurRecycler) {

@@ -6,19 +6,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
-public class ListePatient extends Fragment implements DetecteurDeClicSurRecycler{
+public class ListePatient extends DialogFragment implements DetecteurDeClicSurRecycler{
+
+    FragmentManager fragmentManager;
 
     private RecyclerView mRecyclerView;
     private MonRecyclerViewAdapterPatient mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     CoordinatorLayout mcoordinatorLayout;
-    Donnee donnee = new Donnee(this);
+
+    public ListePatient(){
+
+    }
+
+    public static ListePatient newInstance(FragmentManager fragmentManager){
+        ListePatient listePatient = new ListePatient();
+        listePatient.fragmentManager = fragmentManager;
+        return listePatient;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(
@@ -38,7 +57,7 @@ public class ListePatient extends Fragment implements DetecteurDeClicSurRecycler
         //mLayoutManager=new LinearLayoutManager(this,GridLayoutManager.VERTICAL, false);
 
         //mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MonRecyclerViewAdapterPatient(getDataSource());
+        mAdapter = new MonRecyclerViewAdapterPatient(getContext(), getDataSource());
         mRecyclerView.setAdapter(mAdapter);
 
         mcoordinatorLayout = view.findViewById(R.id.coordinatorLayout);
@@ -50,13 +69,26 @@ public class ListePatient extends Fragment implements DetecteurDeClicSurRecycler
         return view;
     }
 
-    private ArrayList<Donnee> getDataSource() {
-        ArrayList results = new ArrayList<Donnee>();
-        for (int index = 0; index < donnee.taillePlanetes.length; index++) {
-            Donnee obj = new Donnee(donnee.planet[index] ,donnee.taillePlanetes[index], donnee.image[index]);
-            results.add(index, obj);
-        }
-        return results;
+    private ArrayList<LinkedHashMap<String, String>> getDataSource(){
+
+        ArrayList<LinkedHashMap<String, String>> patients = new ArrayList<>();
+
+        LinkedHashMap<String, String> patient1 = new LinkedHashMap<>();
+        patient1.put("nom", "Juw");
+        patient1.put("prenom", "Alex");
+        patient1.put("pathologie", "CTR");
+        patients.add(patient1);
+
+        LinkedHashMap<String, String> patient2 = new LinkedHashMap<>();
+        patient2.put("nom", "Lopier");
+        patient2.put("prenom", "Jean");
+        patient2.put("pathologie", "ADHD");
+        patients.add(patient2);
+
+
+
+        return patients;
+
     }
 
     @Override

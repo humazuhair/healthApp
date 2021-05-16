@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom"
+                android:text="@string/parcours_nom"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:id="@+id/parcours_nom"/>
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/parcours_categorie"
-                android:text="Description"
+                android:text="@string/parcours_description"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/parcours_nom"
-                android:text="Categorie"
+                android:text="@string/parcours_categorie"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
